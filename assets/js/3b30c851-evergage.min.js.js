@@ -210,7 +210,7 @@ window.evergageBeaconParseTimeEnd = (new Date().getTime());
     try {
        Evergage.configure({
            account: "v55685555553z53hf3o3n3n3i097556881",
-           dataset: "aimshospitalsproduction",
+           dataset: "AIMShospitalsproduction",
            cdnUrl: "https://cdn.evergage.com",
            trackerUrl: "https://v55685555553z53hf3o3n3n3i097556881.australia-3.evergage.com",
            siteConfigVersion: "23"
@@ -1501,7 +1501,7 @@ function _getDoctorDetailCached() {
   return __doctorDetailCache;
 }
 
-window.__aims_getDoctorDetailCached = _getDoctorDetailCached;
+window.__AIMS_getDoctorDetailCached = _getDoctorDetailCached;
 
 const getDoctorInfo = function (doctorWrapper) {
   // Experience Cleanup
@@ -1646,54 +1646,54 @@ function getLanguage() {
   return navigator.language || "en-IN";
 }
 
-window.__aims_getLanguage = getLanguage;
+window.__AIMS_getLanguage = getLanguage;
 
 function getSafeLanguage() {
-  if (typeof window.__aims_getLanguage === "function") {
-    return window.__aims_getLanguage();
+  if (typeof window.__AIMS_getLanguage === "function") {
+    return window.__AIMS_getLanguage();
   }
 
   return navigator.language || "en-IN";
 }
 
-window.__aims_currentPageType = "unknown";
-window.__aims_pageTypeMatched = false;
+window.__AIMS_currentPageType = "unknown";
+window.__AIMS_pageTypeMatched = false;
 
-function resetAimsPageType() {
-  window.__aims_currentPageType = "unknown";
-  window.__aims_pageTypeMatched = false;
+function resetAIMSPageType() {
+  window.__AIMS_currentPageType = "unknown";
+  window.__AIMS_pageTypeMatched = false;
 }
 
-window.__aims_resetPageType = resetAimsPageType;
+window.__AIMS_resetPageType = resetAIMSPageType;
 
-function setAimsPageType(pageTypeName) {
-  window.__aims_currentPageType = pageTypeName;
-  window.__aims_pageTypeMatched = true;
+function setAIMSPageType(pageTypeName) {
+  window.__AIMS_currentPageType = pageTypeName;
+  window.__AIMS_pageTypeMatched = true;
   return true;
 }
 
-window.__aims_setPageType = setAimsPageType;
+window.__AIMS_setPageType = setAIMSPageType;
 
 function getSafePageType() {
   if (
-    typeof window.__aims_currentPageType === "string" &&
-    window.__aims_currentPageType
+    typeof window.__AIMS_currentPageType === "string" &&
+    window.__AIMS_currentPageType
   ) {
-    return window.__aims_currentPageType;
+    return window.__AIMS_currentPageType;
   }
 
   return "unknown";
 }
 
-window.__aims_getSafePageType = getSafePageType;
+window.__AIMS_getSafePageType = getSafePageType;
 //Adding gate for test users
 
 SalesforceInteractions.init({
-  cookieDomain: "aimshospitals.com",
+  cookieDomain: "AIMShospitals.com",
 
   consents: [
     {
-      provider: "Aims Consent Manager",
+      provider: "AIMS Consent Manager",
 
       purpose: SalesforceInteractions.mcis.ConsentPurpose.Personalization,
 
@@ -1825,7 +1825,7 @@ SalesforceInteractions.init({
   (function () {
     let pending;
     try {
-      const raw = sessionStorage.getItem("aims_pending_appointment");
+      const raw = sessionStorage.getItem("AIMS_pending_appointment");
       pending = raw ? JSON.parse(raw) : null;
     } catch (e) {
       pending = null;
@@ -1838,7 +1838,7 @@ SalesforceInteractions.init({
       if (settled) return;
       settled = true;
       try {
-        sessionStorage.removeItem("aims_pending_appointment");
+        sessionStorage.removeItem("AIMS_pending_appointment");
       } catch (e) {}
     };
 
@@ -1918,7 +1918,7 @@ SalesforceInteractions.init({
           const matched = path === "" || path === "/" || path === "/index.html";
 
           if (matched) {
-            setAimsPageType("homepage");
+            setAIMSPageType("homepage");
           }
 
           return matched;
@@ -1940,7 +1940,7 @@ SalesforceInteractions.init({
 
           if (!urlMatches) return false;
 
-          setAimsPageType("doctor_detail_page");
+          setAIMSPageType("doctor_detail_page");
 
           return new Promise((resolve) => {
             const fallback = setTimeout(() => resolve(true), 4000);
@@ -2103,7 +2103,7 @@ SalesforceInteractions.init({
 
                 try {
                   sessionStorage.setItem(
-                    "aims_pending_appointment",
+                    "AIMS_pending_appointment",
                     JSON.stringify({
                       name: submittedName,
                       phone: submittedPhone,
@@ -2127,7 +2127,7 @@ SalesforceInteractions.init({
           const matched = path === "/doctors";
 
           if (matched) {
-            setAimsPageType("doctors_page");
+            setAIMSPageType("doctors_page");
           }
 
           return matched;
@@ -2324,7 +2324,7 @@ SalesforceInteractions.init({
               console.log("Submitted Phone:", submittedPhone);
               try {
                 sessionStorage.setItem(
-                  "aims_pending_appointment",
+                  "AIMS_pending_appointment",
                   JSON.stringify({
                     name: submittedName,
                     phone: submittedPhone,
@@ -2350,7 +2350,7 @@ SalesforceInteractions.init({
             params.has("field_city_target_id");
 
           if (matched) {
-            setAimsPageType("hospitals_city_filter_page");
+            setAIMSPageType("hospitals_city_filter_page");
           }
 
           return matched;
@@ -2373,7 +2373,7 @@ SalesforceInteractions.init({
             !params.has("field_city_target_id");
 
           if (matched) {
-            setAimsPageType("hospitals_page");
+            setAIMSPageType("hospitals_page");
           }
 
           return matched;
@@ -2393,7 +2393,7 @@ SalesforceInteractions.init({
           const matched = path === "/pro-health-packages";
 
           if (matched) {
-            setAimsPageType("pro_health_packages_page");
+            setAIMSPageType("pro_health_packages_page");
           }
 
           return matched;
@@ -2413,7 +2413,7 @@ SalesforceInteractions.init({
           const matched = path === "/book-second-opinion";
 
           if (matched) {
-            setAimsPageType("book_second_opinion_page");
+            setAIMSPageType("book_second_opinion_page");
           }
 
           return matched;
@@ -2434,7 +2434,7 @@ SalesforceInteractions.init({
             pathParts[0] === "health-library" && pathParts.length === 2;
 
           if (matched) {
-            setAimsPageType("health_library_detail_page");
+            setAIMSPageType("health_library_detail_page");
           }
 
           return matched;
@@ -2454,7 +2454,7 @@ SalesforceInteractions.init({
           const matched = path === "/health-library";
 
           if (matched) {
-            setAimsPageType("health_library_page");
+            setAIMSPageType("health_library_page");
           }
 
           return matched;
@@ -2474,7 +2474,7 @@ SalesforceInteractions.init({
           const matched = path === "/centres-of-excellence";
 
           if (matched) {
-            setAimsPageType("centres_of_excellence_page");
+            setAIMSPageType("centres_of_excellence_page");
           }
 
           return matched;
@@ -2494,7 +2494,7 @@ SalesforceInteractions.init({
             pathParts[0] === "departments" && pathParts.length === 2;
 
           if (matched) {
-            setAimsPageType("speciality_detail_page");
+            setAIMSPageType("speciality_detail_page");
           }
 
           return matched;
@@ -2514,7 +2514,7 @@ SalesforceInteractions.init({
           const matched = path === "/departments";
 
           if (matched) {
-            setAimsPageType("speciality_page");
+            setAIMSPageType("speciality_page");
           }
 
           return matched;
@@ -2535,7 +2535,7 @@ SalesforceInteractions.init({
             pathParts[0] === "procedures" && pathParts.length === 2;
 
           if (matched) {
-            setAimsPageType("treatment_detail_page");
+            setAIMSPageType("treatment_detail_page");
           }
 
           return matched;
@@ -2555,7 +2555,7 @@ SalesforceInteractions.init({
           const matched = path === "/procedures";
 
           if (matched) {
-            setAimsPageType("treatment_page");
+            setAIMSPageType("treatment_page");
           }
 
           return matched;
@@ -2575,7 +2575,7 @@ SalesforceInteractions.init({
           const matched = path === "/contact-us";
 
           if (matched) {
-            setAimsPageType("contact_us_page");
+            setAIMSPageType("contact_us_page");
           }
 
           return matched;
@@ -2586,22 +2586,22 @@ SalesforceInteractions.init({
         },
       },
       {
-        name: "aims_prohealth_page",
+        name: "AIMS_prohealth_page",
 
         isMatch: () => {
           const path = window.location.pathname.replace(/\/$/, "");
 
-          const matched = path === "/aims-prohealth";
+          const matched = path === "/AIMS-prohealth";
 
           if (matched) {
-            setAimsPageType("aims_prohealth_page");
+            setAIMSPageType("AIMS_prohealth_page");
           }
 
           return matched;
         },
 
         interaction: {
-          name: "Aims ProHealth Page View",
+          name: "AIMS ProHealth Page View",
         },
       },
       {
@@ -2616,19 +2616,19 @@ SalesforceInteractions.init({
 
           const slug = pathParts[0];
 
-          if (slug === "aims-prohealth") {
+          if (slug === "AIMS-prohealth") {
             return false;
           }
 
           const matched =
-            slug.startsWith("aims-prohealth-") ||
+            slug.startsWith("AIMS-prohealth-") ||
             slug.startsWith("prohealth-") ||
-            slug.startsWith("aims-zen-") ||
-            slug.startsWith("aims-adlux-prohealth-") ||
-            slug.startsWith("aims-regular-well-women-check-");
+            slug.startsWith("AIMS-zen-") ||
+            slug.startsWith("AIMS-adlux-prohealth-") ||
+            slug.startsWith("AIMS-regular-well-women-check-");
 
           if (matched) {
-            setAimsPageType("health_package_detail_page");
+            setAIMSPageType("health_package_detail_page");
           }
 
           return matched;
@@ -2648,7 +2648,7 @@ SalesforceInteractions.init({
           const matched = path === "/symptoms";
 
           if (matched) {
-            setAimsPageType("symptoms_page");
+            setAIMSPageType("symptoms_page");
           }
 
           return matched;
@@ -2669,7 +2669,7 @@ SalesforceInteractions.init({
             pathParts[0] === "medicines" && pathParts.length === 2;
 
           if (matched) {
-            setAimsPageType("medicine_detail_page");
+            setAIMSPageType("medicine_detail_page");
           }
 
           return matched;
@@ -2689,7 +2689,7 @@ SalesforceInteractions.init({
           const matched = path === "/medicines";
 
           if (matched) {
-            setAimsPageType("medicines_page");
+            setAIMSPageType("medicines_page");
           }
 
           return matched;
@@ -2709,7 +2709,7 @@ SalesforceInteractions.init({
           const matched = path === "/diagnostics-investigations";
 
           if (matched) {
-            setAimsPageType("diagnostics_investigations_page");
+            setAIMSPageType("diagnostics_investigations_page");
           }
 
           return matched;
@@ -2729,7 +2729,7 @@ SalesforceInteractions.init({
           const matched = path === "/diseases-and-conditions";
 
           if (matched) {
-            setAimsPageType("diseases_and_conditions_page");
+            setAIMSPageType("diseases_and_conditions_page");
           }
 
           return matched;
@@ -2740,16 +2740,16 @@ SalesforceInteractions.init({
         },
       },
       {
-        name: "aims_in_the_news_detail_page",
+        name: "AIMS_in_the_news_detail_page",
 
         isMatch: () => {
           const pathParts = window.location.pathname.split("/").filter(Boolean);
 
           const matched =
-            pathParts[0] === "aims-in-the-news" && pathParts.length === 2;
+            pathParts[0] === "AIMS-in-the-news" && pathParts.length === 2;
 
           if (matched) {
-            setAimsPageType("aims_in_the_news_detail_page");
+            setAIMSPageType("AIMS_in_the_news_detail_page");
           }
 
           return matched;
@@ -2761,15 +2761,15 @@ SalesforceInteractions.init({
       },
 
       {
-        name: "aims_in_the_news_page",
+        name: "AIMS_in_the_news_page",
 
         isMatch: () => {
           const path = window.location.pathname.replace(/\/$/, "");
 
-          const matched = path === "/aims-in-the-news";
+          const matched = path === "/AIMS-in-the-news";
 
           if (matched) {
-            setAimsPageType("aims_in_the_news_page");
+            setAIMSPageType("AIMS_in_the_news_page");
           }
 
           return matched;
@@ -2792,7 +2792,7 @@ SalesforceInteractions.init({
             CITY_SLUGS.includes(pathParts[1]);
 
           if (matched) {
-            setAimsPageType("book_doctor_appointment_city_page");
+            setAIMSPageType("book_doctor_appointment_city_page");
           }
 
           return matched;
@@ -2815,7 +2815,7 @@ SalesforceInteractions.init({
             SPECIALITY_SLUGS.includes(pathParts[1]);
 
           if (matched) {
-            setAimsPageType("book_doctor_appointment_speciality_page");
+            setAIMSPageType("book_doctor_appointment_speciality_page");
           }
 
           return matched;
@@ -2835,7 +2835,7 @@ SalesforceInteractions.init({
           const matched = path === "/book-doctor-appointment";
 
           if (matched) {
-            setAimsPageType("book_doctor_appointment_page");
+            setAIMSPageType("book_doctor_appointment_page");
           }
 
           return matched;
@@ -2855,7 +2855,7 @@ SalesforceInteractions.init({
           const matched = path === "/online-doctors";
 
           if (matched) {
-            setAimsPageType("online_doctors_page");
+            setAIMSPageType("online_doctors_page");
           }
 
           return matched;
@@ -2874,7 +2874,7 @@ SalesforceInteractions.init({
           const matched = path === "/search";
 
           if (matched) {
-            setAimsPageType("search_page");
+            setAIMSPageType("search_page");
           }
 
           return matched;
@@ -2895,7 +2895,7 @@ SalesforceInteractions.init({
           const matched = CITY_SLUGS.includes(slug);
 
           if (matched) {
-            setAimsPageType("city_home_page");
+            setAIMSPageType("city_home_page");
           }
 
           return matched;
@@ -2910,8 +2910,8 @@ SalesforceInteractions.init({
         name: "general_pages",
 
         isMatch: () => {
-          if (!window.__aims_pageTypeMatched) {
-            setAimsPageType("general_pages");
+          if (!window.__AIMS_pageTypeMatched) {
+            setAIMSPageType("general_pages");
             return true;
           }
 

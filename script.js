@@ -3,7 +3,7 @@
   var js = document.createElement("script");
   js.setAttribute("src", "assets/js/86b0ebb4-dropdown.js.js");
   js.setAttribute("data-gt-orig-url", "/hyderabad");
-  js.setAttribute("data-gt-orig-domain", "www.aimshospitals.com");
+  js.setAttribute("data-gt-orig-domain", "www.AIMShospitals.com");
   document.body.appendChild(js);
 })();
 window.a2a_config = window.a2a_config || {};

@@ -3,10 +3,10 @@
     attach: function (context, settings) {
       $(document).ready(function() {
       function showTab(index) {
-        $(".tab_btn_button_aims, .tab_content_aims").removeClass("active");
-        $(".tab_btn_button_aims").eq(index).addClass("active");
-        $(".tab_content_aims").eq(index).addClass("active");
-        $(".tab_btn_button_aims").eq(index)[0].scrollIntoView({
+        $(".tab_btn_button_AIMS, .tab_content_AIMS").removeClass("active");
+        $(".tab_btn_button_AIMS").eq(index).addClass("active");
+        $(".tab_content_AIMS").eq(index).addClass("active");
+        $(".tab_btn_button_AIMS").eq(index)[0].scrollIntoView({
           behavior: "smooth",
           inline: "center",
            block: "nearest"
@@ -15,25 +15,25 @@
       }
 
       function updateButtons(index) {
-        $(".prev_tab_btn_aims").prop("disabled", index === 0);
-        $(".next_tab_btn_aims").prop("disabled", index === $(".tab_btn_button_aims").length - 1);
+        $(".prev_tab_btn_AIMS").prop("disabled", index === 0);
+        $(".next_tab_btn_AIMS").prop("disabled", index === $(".tab_btn_button_AIMS").length - 1);
       }
 
-      $(".tab_btn_button_aims").click(function() {
+      $(".tab_btn_button_AIMS").click(function() {
         let index = $(this).index();
         showTab(index);
       });
 
-      $(".next_tab_btn_aims").click(function() {
-        let index = $(".tab_btn_button_aims.active").index();
-        if (index < $(".tab_btn_button_aims").length - 1) {
+      $(".next_tab_btn_AIMS").click(function() {
+        let index = $(".tab_btn_button_AIMS.active").index();
+        if (index < $(".tab_btn_button_AIMS").length - 1) {
           showTab(index + 1);
         }
         console('');
       });
 
-      $(".prev_tab_btn_aims").click(function() {
-        let index = $(".tab_btn_button_aims.active").index();
+      $(".prev_tab_btn_AIMS").click(function() {
+        let index = $(".tab_btn_button_AIMS.active").index();
         if (index > 0) {
           showTab(index - 1);
         }

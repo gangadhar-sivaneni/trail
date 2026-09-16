@@ -244,25 +244,25 @@ $(document).ready(function () {
 if(window.matchMedia("(min-width: 992px)").matches){
  $(window).on("scroll load", function() {
     if ($(window).scrollTop() >= 50) {
-        $('.header_aims_proton').addClass('fixed-header');
+        $('.header_AIMS_proton').addClass('fixed-header');
     } else {
-        $('.header_aims_proton').removeClass('fixed-header');
+        $('.header_AIMS_proton').removeClass('fixed-header');
     }
 });
 }
 $(".toggle_btn").click(function () {
-    $(".aims_navbar_wrapper").toggleClass("active");
+    $(".AIMS_navbar_wrapper").toggleClass("active");
   });
 
-$(".nav_link_aims_proton").click(function () {
-    $(".aims_navbar_wrapper").removeClass("active");
+$(".nav_link_AIMS_proton").click(function () {
+    $(".AIMS_navbar_wrapper").removeClass("active");
 });
 
 
 
 
   const offsetTop = 70;
-  $(".nav_link_aims_proton").on("click", function (e) {
+  $(".nav_link_AIMS_proton").on("click", function (e) {
     e.preventDefault();
     const target = $(this).attr("href");
     $("html, body").animate(
@@ -271,7 +271,7 @@ $(".nav_link_aims_proton").click(function () {
       },
       800
     );
-    $(".nav_link_aims_proton").removeClass("active");
+    $(".nav_link_AIMS_proton").removeClass("active");
     $(this).addClass("active");
   });
 
@@ -279,7 +279,7 @@ $(".nav_link_aims_proton").click(function () {
     const scrollPos = $(window).scrollTop();
     let foundActive = false;
 
-    $(".nav_link_aims_proton").each(function () {
+    $(".nav_link_AIMS_proton").each(function () {
       const target = $(this).attr("href");
       const section = $(target);
 
@@ -287,14 +287,14 @@ $(".nav_link_aims_proton").click(function () {
         const sectionTop = section.offset().top - offsetTop - 1;
         const sectionBottom = sectionTop + section.outerHeight();
         if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-          $(".nav_link_aims_proton").removeClass("active");
+          $(".nav_link_AIMS_proton").removeClass("active");
           $(this).addClass("active");
           foundActive = true;
         }
       }
     });
     if (!foundActive) {
-      $(".nav_link_aims_proton").removeClass("active");
+      $(".nav_link_AIMS_proton").removeClass("active");
     }
   });
 
@@ -384,11 +384,11 @@ if ($(window).width() >= 992) {
         spaceBetween: 10,
         autoHeight: true, 
         navigation: {
-        nextEl: ".why_choose_aims_poroton_next",
-        prevEl: ".why_choose_aims_poroton_back",
+        nextEl: ".why_choose_AIMS_poroton_next",
+        prevEl: ".why_choose_AIMS_poroton_back",
       },
         pagination: {
-          el: ".why_choose_aims_poroton_pagination",
+          el: ".why_choose_AIMS_poroton_pagination",
           clickable: true,
         },
         breakpoints: {
@@ -1329,7 +1329,7 @@ window.addEventListener("scroll", () => {
 (function (Drupal, once) {
   // Flag Delhi pages on <body> so header CSS can target Delhi only,
   // regardless of page type (node, view, etc.) - mirrors the same
-  // first-path-segment check used in block--aims-gtranslate.html.twig.
+  // first-path-segment check used in block--AIMS-gtranslate.html.twig.
   Drupal.behaviors.flagDelhiPage = {
     attach(context) {
       once('flag-delhi-page', 'body', context).forEach((body) => {
